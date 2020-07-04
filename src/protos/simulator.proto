@@ -1,10 +1,10 @@
 syntax = "proto3";
 
 message NextTaskInformation {
-  int id = 0;
-  int wind_variance = 0;
+  float id = 1;
+  float wind_variance = 2;
 }
 
 service Simulator {
-  rpc GetTask() returns (NextTaskInformation) {}
+  rpc GetTask(NextTaskInformation) returns (NextTaskInformation) {}
 }
