@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x0fsimulator.proto\"8\n\x13NextTaskInformation\x12\n\n\x02id\x18\x01 \x01(\x02\x12\x15\n\rwind_variance\x18\x02 \x01(\x02\x32\x44\n\tSimulator\x12\x37\n\x07GetTask\x12\x14.NextTaskInformation\x1a\x14.NextTaskInformation\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0fsimulator.proto\"!\n\x13NextTaskInformation\x12\n\n\x02id\x18\x01 \x01(\x02\x32\x44\n\tSimulator\x12\x37\n\x07GetTask\x12\x14.NextTaskInformation\x1a\x14.NextTaskInformation\"\x00\x62\x06proto3'
 )
 
 
@@ -38,13 +38,6 @@ _NEXTTASKINFORMATION = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='wind_variance', full_name='NextTaskInformation.wind_variance', index=1,
-      number=2, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -58,7 +51,7 @@ _NEXTTASKINFORMATION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=19,
-  serialized_end=75,
+  serialized_end=52,
 )
 
 DESCRIPTOR.message_types_by_name['NextTaskInformation'] = _NEXTTASKINFORMATION
@@ -79,8 +72,8 @@ _SIMULATOR = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=77,
-  serialized_end=145,
+  serialized_start=54,
+  serialized_end=122,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetTask',
