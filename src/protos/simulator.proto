@@ -2,7 +2,6 @@ syntax = "proto3";
 
 message NextTaskInformation {
   float id = 1;
-  float wind_variance = 2;
 }
 
 service Simulator {
