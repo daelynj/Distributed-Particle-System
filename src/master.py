@@ -5,11 +5,21 @@ import simulator_pb2
 import simulator_pb2_grpc
 import simulator
 
+worker_count = 0
+
 
 class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
-    def SquareRoot(self, request, context):
-        response = simulator_pb2.Number()
-        response.value = simulator.square_root(request.value)
+    def GetTask(self, request, context):
+        global worker_count
+        response = simulator_pb2.NextTaskInformation()
+        worker_count = simulator.get_new_worker_id(worker_count)
+        response.id = worker_count
+        response.wind_variance = 5
+
+        print("Assigning task to worker: " + str(response.id))
+        print("Task data: \nWind variance: " +
+              str(response.wind_variance) + "\n")
+
         return response
 
 

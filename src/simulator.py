@@ -1,4 +1,2 @@
-import math
-
-def square_root(x):
-  return math.sqrt(x)
+def get_new_worker_id(worker_count):
+    return worker_count + 1

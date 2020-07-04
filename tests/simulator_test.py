@@ -1,6 +1,6 @@
 import pytest
-from src.simulator import square_root
+from src.simulator import get_new_worker_id
 
 
-def test_square_root():
-    assert square_root(9) == 3
+def test_get_new_worker_id():
+    assert get_new_worker_id(2) == 3
