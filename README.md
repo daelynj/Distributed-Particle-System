@@ -10,5 +10,4 @@ To run the application from the root directory:
 `python src/master.py`
 
 Then in a separate terminal run:
-
 `python src/worker.py`
