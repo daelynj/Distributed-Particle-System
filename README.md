@@ -1,7 +1,7 @@
 # Distributed-Particle-System
 
 To install dependencies from the root directory:
-`pip install -r requirements`
+`pip install -r requirements.txt`
 
 To run tests from the root directory:
 `python -m pytest`
