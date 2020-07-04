@@ -13,17 +13,17 @@ class SimulatorStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.SquareRoot = channel.unary_unary(
-                '/Simulator/SquareRoot',
-                request_serializer=simulator__pb2.Number.SerializeToString,
-                response_deserializer=simulator__pb2.Number.FromString,
+        self.GetTask = channel.unary_unary(
+                '/Simulator/GetTask',
+                request_serializer=simulator__pb2.NextTaskInformation.SerializeToString,
+                response_deserializer=simulator__pb2.NextTaskInformation.FromString,
                 )
 
 
 class SimulatorServicer(object):
     """Missing associated documentation comment in .proto file"""
 
-    def SquareRoot(self, request, context):
+    def GetTask(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -32,10 +32,10 @@ class SimulatorServicer(object):
 
 def add_SimulatorServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'SquareRoot': grpc.unary_unary_rpc_method_handler(
-                    servicer.SquareRoot,
-                    request_deserializer=simulator__pb2.Number.FromString,
-                    response_serializer=simulator__pb2.Number.SerializeToString,
+            'GetTask': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetTask,
+                    request_deserializer=simulator__pb2.NextTaskInformation.FromString,
+                    response_serializer=simulator__pb2.NextTaskInformation.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -48,7 +48,7 @@ class Simulator(object):
     """Missing associated documentation comment in .proto file"""
 
     @staticmethod
-    def SquareRoot(request,
+    def GetTask(request,
             target,
             options=(),
             channel_credentials=None,
@@ -57,8 +57,8 @@ class Simulator(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/Simulator/SquareRoot',
-            simulator__pb2.Number.SerializeToString,
-            simulator__pb2.Number.FromString,
+        return grpc.experimental.unary_unary(request, target, '/Simulator/GetTask',
+            simulator__pb2.NextTaskInformation.SerializeToString,
+            simulator__pb2.NextTaskInformation.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)

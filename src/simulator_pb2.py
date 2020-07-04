@@ -18,22 +18,29 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x0fsimulator.proto\"\x17\n\x06Number\x12\r\n\x05value\x18\x01 \x01(\x02\x32-\n\tSimulator\x12 \n\nSquareRoot\x12\x07.Number\x1a\x07.Number\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0fsimulator.proto\"8\n\x13NextTaskInformation\x12\n\n\x02id\x18\x01 \x01(\x02\x12\x15\n\rwind_variance\x18\x02 \x01(\x02\x32\x44\n\tSimulator\x12\x37\n\x07GetTask\x12\x14.NextTaskInformation\x1a\x14.NextTaskInformation\"\x00\x62\x06proto3'
 )
 
 
 
 
-_NUMBER = _descriptor.Descriptor(
-  name='Number',
-  full_name='Number',
+_NEXTTASKINFORMATION = _descriptor.Descriptor(
+  name='NextTaskInformation',
+  full_name='NextTaskInformation',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='value', full_name='Number.value', index=0,
+      name='id', full_name='NextTaskInformation.id', index=0,
       number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='wind_variance', full_name='NextTaskInformation.wind_variance', index=1,
+      number=2, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -51,18 +58,18 @@ _NUMBER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=19,
-  serialized_end=42,
+  serialized_end=75,
 )
 
-DESCRIPTOR.message_types_by_name['Number'] = _NUMBER
+DESCRIPTOR.message_types_by_name['NextTaskInformation'] = _NEXTTASKINFORMATION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Number = _reflection.GeneratedProtocolMessageType('Number', (_message.Message,), {
-  'DESCRIPTOR' : _NUMBER,
+NextTaskInformation = _reflection.GeneratedProtocolMessageType('NextTaskInformation', (_message.Message,), {
+  'DESCRIPTOR' : _NEXTTASKINFORMATION,
   '__module__' : 'simulator_pb2'
-  # @@protoc_insertion_point(class_scope:Number)
+  # @@protoc_insertion_point(class_scope:NextTaskInformation)
   })
-_sym_db.RegisterMessage(Number)
+_sym_db.RegisterMessage(NextTaskInformation)
 
 
 
@@ -72,16 +79,16 @@ _SIMULATOR = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=44,
-  serialized_end=89,
+  serialized_start=77,
+  serialized_end=145,
   methods=[
   _descriptor.MethodDescriptor(
-    name='SquareRoot',
-    full_name='Simulator.SquareRoot',
+    name='GetTask',
+    full_name='Simulator.GetTask',
     index=0,
     containing_service=None,
-    input_type=_NUMBER,
-    output_type=_NUMBER,
+    input_type=_NEXTTASKINFORMATION,
+    output_type=_NEXTTASKINFORMATION,
     serialized_options=None,
   ),
 ])
