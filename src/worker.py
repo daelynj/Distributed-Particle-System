@@ -4,6 +4,9 @@ import time
 # import the generated classes
 import simulator_pb2
 import simulator_pb2_grpc
+from file_service import FileService
+
+file_service = FileService()
 
 
 def get_task(stub):
@@ -13,12 +16,15 @@ def get_task(stub):
 
 def run():
     with grpc.insecure_channel('localhost:50051') as channel:
+        global file
+
         stub = simulator_pb2_grpc.SimulatorStub(channel)
         task = get_task(stub)
-        print("Assigned worker ID: " + str(task.id))
-        print("Wind variance: " + str(task.wind_variance))
-        print("Doing work ...")
-        time.sleep(10)
+
+        file = file_service.generate_file(task.id)
+
+        file_service.append_particle_position(file, 1, 2)
+        file_service.append_particle_position(file, 3, 4)
 
 
 if __name__ == '__main__':

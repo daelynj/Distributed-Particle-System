@@ -14,11 +14,6 @@ class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
         response = simulator_pb2.NextTaskInformation()
         worker_count = simulator.get_new_worker_id(worker_count)
         response.id = worker_count
-        response.wind_variance = 5
-
-        print("Assigning task to worker: " + str(response.id))
-        print("Task data: \nWind variance: " +
-              str(response.wind_variance) + "\n")
 
         return response
 
