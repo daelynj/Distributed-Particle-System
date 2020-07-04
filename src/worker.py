@@ -4,17 +4,18 @@ import grpc
 import simulator_pb2
 import simulator_pb2_grpc
 
-# open a gRPC channel
-channel = grpc.insecure_channel('localhost:50051')
 
-# create a stub (client)
-stub = simulator_pb2_grpc.SimulatorStub(channel)
+def simulate_square_root(stub, value):
+    number = simulator_pb2.Number(value=16)
+    response = stub.SquareRoot(number)
+    print(response.value)
 
-# create a valid request message
-number = simulator_pb2.Number(value=16)
 
-# make the call
-response = stub.SquareRoot(number)
+def run():
+    with grpc.insecure_channel('localhost:50051') as channel:
+        stub = simulator_pb2_grpc.SimulatorStub(channel)
+    simulate_square_root(stub, 16)
 
-# et voilà
-print(response.value)
+
+if __name__ == '__main__':
+    run()
