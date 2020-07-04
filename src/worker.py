@@ -14,7 +14,7 @@ def simulate_square_root(stub, value):
 def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = simulator_pb2_grpc.SimulatorStub(channel)
-    simulate_square_root(stub, 16)
+        simulate_square_root(stub, 16)
 
 
 if __name__ == '__main__':
