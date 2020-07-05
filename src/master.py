@@ -8,7 +8,7 @@ import simulator_pb2_grpc
 import simulator
 
 WORKER_COUNT = 0
-MAX_PARTICLES = 100000
+MAX_PARTICLES = 10000
 PARTICLES_LEFT = MAX_PARTICLES
 
 
@@ -31,7 +31,7 @@ class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
 
         PARTICLES_LEFT = PARTICLES_LEFT - 1000
 
-        response.particle_count = int(PARTICLES_LEFT / 10)
+        response.particle_count = 1000
 
         print("particles left: {}".format(PARTICLES_LEFT))
 
