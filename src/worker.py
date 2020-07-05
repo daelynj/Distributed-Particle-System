@@ -10,12 +10,12 @@ from particle import Emitter, smoke_machine
 FILE_SERVICE = FileService()
 
 
-def build_particles(particle_count):
+def build_particles(frame_count):
     e = Emitter((100, 100))
     e.add_factory(smoke_machine())
 
     history = []
-    for i in range(particle_count):
+    for i in range(frame_count):
         history.append(f"frame {i}\n")
         e.update()
         history.append(copy.deepcopy(e.particles))
@@ -44,7 +44,7 @@ def run():
         file = FILE_SERVICE.generate_file(worker_information.id)
 
         while(task.work_complete != 1):
-            particles = build_particles(task.particle_count)
+            particles = build_particles(task.frame_count)
 
             FILE_SERVICE.append_particle_data(file, particles)
 

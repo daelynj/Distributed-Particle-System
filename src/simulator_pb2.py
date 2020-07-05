@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x0fsimulator.proto\"\"\n\x14NewWorkerInformation\x12\n\n\x02id\x18\x01 \x01(\x05\"C\n\x12NewTaskInformation\x12\x16\n\x0eparticle_count\x18\x02 \x01(\x05\x12\x15\n\rwork_complete\x18\x03 \x01(\x05\x32\x89\x01\n\tSimulator\x12\x42\n\x10InitializeWorker\x12\x15.NewWorkerInformation\x1a\x15.NewWorkerInformation\"\x00\x12\x38\n\nGetNewTask\x12\x13.NewTaskInformation\x1a\x13.NewTaskInformation\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0fsimulator.proto\"\"\n\x14NewWorkerInformation\x12\n\n\x02id\x18\x01 \x01(\x05\"@\n\x12NewTaskInformation\x12\x13\n\x0b\x66rame_count\x18\x02 \x01(\x05\x12\x15\n\rwork_complete\x18\x03 \x01(\x05\x32\x89\x01\n\tSimulator\x12\x42\n\x10InitializeWorker\x12\x15.NewWorkerInformation\x1a\x15.NewWorkerInformation\"\x00\x12\x38\n\nGetNewTask\x12\x13.NewTaskInformation\x1a\x13.NewTaskInformation\"\x00\x62\x06proto3'
 )
 
 
@@ -63,7 +63,7 @@ _NEWTASKINFORMATION = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='particle_count', full_name='NewTaskInformation.particle_count', index=0,
+      name='frame_count', full_name='NewTaskInformation.frame_count', index=0,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -89,7 +89,7 @@ _NEWTASKINFORMATION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=55,
-  serialized_end=122,
+  serialized_end=119,
 )
 
 DESCRIPTOR.message_types_by_name['NewWorkerInformation'] = _NEWWORKERINFORMATION
@@ -118,8 +118,8 @@ _SIMULATOR = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=125,
-  serialized_end=262,
+  serialized_start=122,
+  serialized_end=259,
   methods=[
   _descriptor.MethodDescriptor(
     name='InitializeWorker',

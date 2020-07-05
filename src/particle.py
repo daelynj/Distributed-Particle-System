@@ -116,12 +116,12 @@ class Emitter(object):
 
     def update(self):
       for f in self.factories:
-          self.particles.extend(next(f))
+            self.particles.extend(next(f))
 
       for p in self.particles[:]:
-          p.move()
-            if p.age == -1:
-                self.particles.remove(p)
+        p.move()
+        if p.age == -1:
+            self.particles.remove(p)
 
     def log(self):
         for p in self.particles:
