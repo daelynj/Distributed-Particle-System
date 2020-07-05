@@ -11,12 +11,12 @@ FILE_SERVICE = FileService()
 
 def build_particles(particle_count):
     e = Emitter((100, 100))
-    e.add_factory(smoke_machine(), particle_count)
+    e.add_factory(smoke_machine())
 
-    for i in range(10):
+    while ((len(e.particles) % particle_count) != 0):
         e.update()
 
-    return e.particles
+    return e.particles[-particle_count:]
 
 
 def get_worker_information(stub):

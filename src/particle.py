@@ -111,7 +111,7 @@ class Emitter(object):
         self.factories = []
         self.pos = pos
 
-    def add_factory(self, factory, pre_fill=5000):
+    def add_factory(self, factory, pre_fill=300):
         self.factories.append(factory)
         tmp = []
         for _ in range(pre_fill):
