@@ -5,7 +5,8 @@ message NewWorkerInformation {
 }
 
 message NewTaskInformation {
-    int32 particle_count = 1;
+    int32 particle_count = 2;
+    int32 work_complete = 3;
 }
 
 service Simulator {

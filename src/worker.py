@@ -25,6 +25,7 @@ def get_worker_information(stub):
 
 
 def get_task(stub):
+    print("Getting new task")
     request = simulator_pb2.NewTaskInformation()
     return stub.GetNewTask(request)
 
@@ -37,11 +38,12 @@ def run():
 
         file = FILE_SERVICE.generate_file(worker_information.id)
 
-        particles = build_particles(task.particle_count)
+        while(task.work_complete != 1):
+            particles = build_particles(task.particle_count)
 
-        FILE_SERVICE.append_particle_data(file, particles)
+            FILE_SERVICE.append_particle_data(file, particles)
 
-        # check for new ask
+            task = get_task(stub)
 
 
 if __name__ == '__main__':

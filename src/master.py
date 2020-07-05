@@ -8,7 +8,7 @@ import simulator_pb2_grpc
 import simulator
 
 WORKER_COUNT = 0
-MAX_PARTICLES = 10000
+MAX_PARTICLES = 100000
 PARTICLES_LEFT = MAX_PARTICLES
 
 
@@ -22,14 +22,24 @@ class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
         return response
 
     def GetNewTask(self, request, context):
+        global PARTICLES_LEFT
         response = simulator_pb2.NewTaskInformation()
+
+        if (PARTICLES_LEFT == 0):
+            response.work_complete = 1
+            return response
+
+        PARTICLES_LEFT = PARTICLES_LEFT - 1000
+
         response.particle_count = int(PARTICLES_LEFT / 10)
+
+        print("particles left: {}".format(PARTICLES_LEFT))
 
         return response
 
 
 def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=20))
     simulator_pb2_grpc.add_SimulatorServicer_to_server(
         SimulatorServicer(), server)
     server.add_insecure_port('[::]:50051')
