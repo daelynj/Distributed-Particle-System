@@ -111,22 +111,15 @@ class Emitter(object):
         self.factories = []
         self.pos = pos
 
-    def add_factory(self, factory, pre_fill=300):
+    def add_factory(self, factory):
         self.factories.append(factory)
-        tmp = []
-        for _ in range(pre_fill):
-            n = next(factory)
-            tmp.extend(n)
-            for p in tmp:
-                p.move()
-        self.particles.extend(tmp)
 
     def update(self):
-        for f in self.factories:
-            self.particles.extend(next(f))
+      for f in self.factories:
+          self.particles.extend(next(f))
 
-        for p in self.particles[:]:
-            p.move()
+      for p in self.particles[:]:
+          p.move()
             if p.age == -1:
                 self.particles.remove(p)
 
