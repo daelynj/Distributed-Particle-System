@@ -18,12 +18,23 @@ class SimulatorStub(object):
                 request_serializer=simulator__pb2.NewWorkerInformation.SerializeToString,
                 response_deserializer=simulator__pb2.NewWorkerInformation.FromString,
                 )
+        self.GetNewTask = channel.unary_unary(
+                '/Simulator/GetNewTask',
+                request_serializer=simulator__pb2.NewTaskInformation.SerializeToString,
+                response_deserializer=simulator__pb2.NewTaskInformation.FromString,
+                )
 
 
 class SimulatorServicer(object):
     """Missing associated documentation comment in .proto file"""
 
     def InitializeWorker(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetNewTask(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -36,6 +47,11 @@ def add_SimulatorServicer_to_server(servicer, server):
                     servicer.InitializeWorker,
                     request_deserializer=simulator__pb2.NewWorkerInformation.FromString,
                     response_serializer=simulator__pb2.NewWorkerInformation.SerializeToString,
+            ),
+            'GetNewTask': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetNewTask,
+                    request_deserializer=simulator__pb2.NewTaskInformation.FromString,
+                    response_serializer=simulator__pb2.NewTaskInformation.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -60,5 +76,21 @@ class Simulator(object):
         return grpc.experimental.unary_unary(request, target, '/Simulator/InitializeWorker',
             simulator__pb2.NewWorkerInformation.SerializeToString,
             simulator__pb2.NewWorkerInformation.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetNewTask(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Simulator/GetNewTask',
+            simulator__pb2.NewTaskInformation.SerializeToString,
+            simulator__pb2.NewTaskInformation.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)

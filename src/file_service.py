@@ -1,6 +1,6 @@
 class FileService():
     def generate_file(self, worker_id):
-        return open("particle_timeline_data/particle_timeline_{}.txt".format(worker_id), "w+")
+        return open("src/particle_timeline_data/particle_timeline_{}.txt".format(worker_id), "w+")
 
     def append_particle_data(self, file, particles):
         for particle in particles:

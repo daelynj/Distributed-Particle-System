@@ -1,9 +1,14 @@
 syntax = "proto3";
 
 message NewWorkerInformation {
-  float id = 1;
+    int32 id = 1;
+}
+
+message NewTaskInformation {
+    int32 particle_count = 1;
 }
 
 service Simulator {
-  rpc InitializeWorker(NewWorkerInformation) returns (NewWorkerInformation) {}
+    rpc InitializeWorker(NewWorkerInformation) returns (NewWorkerInformation) {}
+    rpc GetNewTask(NewTaskInformation) returns (NewTaskInformation) {}
 }

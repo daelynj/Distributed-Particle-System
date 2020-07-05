@@ -24,14 +24,20 @@ def get_worker_information(stub):
     return stub.InitializeWorker(request)
 
 
+def get_task(stub):
+    request = simulator_pb2.NewTaskInformation()
+    return stub.GetNewTask(request)
+
+
 def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = simulator_pb2_grpc.SimulatorStub(channel)
         worker_information = get_worker_information(stub)
+        task = get_task(stub)
 
         file = FILE_SERVICE.generate_file(worker_information.id)
 
-        particles = build_particles(1000)
+        particles = build_particles(task.particle_count)
 
         FILE_SERVICE.append_particle_data(file, particles)
 

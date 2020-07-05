@@ -21,6 +21,12 @@ class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
 
         return response
 
+    def GetNewTask(self, request, context):
+        response = simulator_pb2.NewTaskInformation()
+        response.particle_count = int(PARTICLES_LEFT / 10)
+
+        return response
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
