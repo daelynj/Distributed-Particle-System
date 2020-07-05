@@ -8,12 +8,14 @@ import simulator_pb2_grpc
 import simulator
 
 WORKER_COUNT = 0
+MAX_PARTICLES = 10000
+PARTICLES_LEFT = MAX_PARTICLES
 
 
 class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
-    def GetTask(self, request, context):
+    def InitializeWorker(self, request, context):
         global WORKER_COUNT
-        response = simulator_pb2.NextTaskInformation()
+        response = simulator_pb2.NewWorkerInformation()
         WORKER_COUNT = simulator.get_new_worker_id(WORKER_COUNT)
         response.id = WORKER_COUNT
 

@@ -18,21 +18,21 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x0fsimulator.proto\"!\n\x13NextTaskInformation\x12\n\n\x02id\x18\x01 \x01(\x02\x32\x44\n\tSimulator\x12\x37\n\x07GetTask\x12\x14.NextTaskInformation\x1a\x14.NextTaskInformation\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0fsimulator.proto\"\"\n\x14NewWorkerInformation\x12\n\n\x02id\x18\x01 \x01(\x02\x32O\n\tSimulator\x12\x42\n\x10InitializeWorker\x12\x15.NewWorkerInformation\x1a\x15.NewWorkerInformation\"\x00\x62\x06proto3'
 )
 
 
 
 
-_NEXTTASKINFORMATION = _descriptor.Descriptor(
-  name='NextTaskInformation',
-  full_name='NextTaskInformation',
+_NEWWORKERINFORMATION = _descriptor.Descriptor(
+  name='NewWorkerInformation',
+  full_name='NewWorkerInformation',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='NextTaskInformation.id', index=0,
+      name='id', full_name='NewWorkerInformation.id', index=0,
       number=1, type=2, cpp_type=6, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
@@ -51,18 +51,18 @@ _NEXTTASKINFORMATION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=19,
-  serialized_end=52,
+  serialized_end=53,
 )
 
-DESCRIPTOR.message_types_by_name['NextTaskInformation'] = _NEXTTASKINFORMATION
+DESCRIPTOR.message_types_by_name['NewWorkerInformation'] = _NEWWORKERINFORMATION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-NextTaskInformation = _reflection.GeneratedProtocolMessageType('NextTaskInformation', (_message.Message,), {
-  'DESCRIPTOR' : _NEXTTASKINFORMATION,
+NewWorkerInformation = _reflection.GeneratedProtocolMessageType('NewWorkerInformation', (_message.Message,), {
+  'DESCRIPTOR' : _NEWWORKERINFORMATION,
   '__module__' : 'simulator_pb2'
-  # @@protoc_insertion_point(class_scope:NextTaskInformation)
+  # @@protoc_insertion_point(class_scope:NewWorkerInformation)
   })
-_sym_db.RegisterMessage(NextTaskInformation)
+_sym_db.RegisterMessage(NewWorkerInformation)
 
 
 
@@ -72,16 +72,16 @@ _SIMULATOR = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=54,
-  serialized_end=122,
+  serialized_start=55,
+  serialized_end=134,
   methods=[
   _descriptor.MethodDescriptor(
-    name='GetTask',
-    full_name='Simulator.GetTask',
+    name='InitializeWorker',
+    full_name='Simulator.InitializeWorker',
     index=0,
     containing_service=None,
-    input_type=_NEXTTASKINFORMATION,
-    output_type=_NEXTTASKINFORMATION,
+    input_type=_NEWWORKERINFORMATION,
+    output_type=_NEWWORKERINFORMATION,
     serialized_options=None,
   ),
 ])

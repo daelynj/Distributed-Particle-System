@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-message NextTaskInformation {
+message NewWorkerInformation {
   float id = 1;
 }
 
 service Simulator {
-  rpc GetTask(NextTaskInformation) returns (NextTaskInformation) {}
+  rpc InitializeWorker(NewWorkerInformation) returns (NewWorkerInformation) {}
 }

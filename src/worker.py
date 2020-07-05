@@ -19,22 +19,23 @@ def build_particles(particle_count):
     return e.particles
 
 
-def get_task(stub):
-    request = simulator_pb2.NextTaskInformation()
-    return stub.GetTask(request)
+def get_worker_information(stub):
+    request = simulator_pb2.NewWorkerInformation()
+    return stub.InitializeWorker(request)
 
 
 def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = simulator_pb2_grpc.SimulatorStub(channel)
-        task = get_task(stub)
-        particle_count = 1000
+        worker_information = get_worker_information(stub)
 
-        file = FILE_SERVICE.generate_file(task.id)
+        file = FILE_SERVICE.generate_file(worker_information.id)
 
-        particles = build_particles(particle_count)
+        particles = build_particles(1000)
 
         FILE_SERVICE.append_particle_data(file, particles)
+
+        # check for new ask
 
 
 if __name__ == '__main__':

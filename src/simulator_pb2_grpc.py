@@ -13,17 +13,17 @@ class SimulatorStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetTask = channel.unary_unary(
-                '/Simulator/GetTask',
-                request_serializer=simulator__pb2.NextTaskInformation.SerializeToString,
-                response_deserializer=simulator__pb2.NextTaskInformation.FromString,
+        self.InitializeWorker = channel.unary_unary(
+                '/Simulator/InitializeWorker',
+                request_serializer=simulator__pb2.NewWorkerInformation.SerializeToString,
+                response_deserializer=simulator__pb2.NewWorkerInformation.FromString,
                 )
 
 
 class SimulatorServicer(object):
     """Missing associated documentation comment in .proto file"""
 
-    def GetTask(self, request, context):
+    def InitializeWorker(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -32,10 +32,10 @@ class SimulatorServicer(object):
 
 def add_SimulatorServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetTask': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetTask,
-                    request_deserializer=simulator__pb2.NextTaskInformation.FromString,
-                    response_serializer=simulator__pb2.NextTaskInformation.SerializeToString,
+            'InitializeWorker': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitializeWorker,
+                    request_deserializer=simulator__pb2.NewWorkerInformation.FromString,
+                    response_serializer=simulator__pb2.NewWorkerInformation.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -48,7 +48,7 @@ class Simulator(object):
     """Missing associated documentation comment in .proto file"""
 
     @staticmethod
-    def GetTask(request,
+    def InitializeWorker(request,
             target,
             options=(),
             channel_credentials=None,
@@ -57,8 +57,8 @@ class Simulator(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/Simulator/GetTask',
-            simulator__pb2.NextTaskInformation.SerializeToString,
-            simulator__pb2.NextTaskInformation.FromString,
+        return grpc.experimental.unary_unary(request, target, '/Simulator/InitializeWorker',
+            simulator__pb2.NewWorkerInformation.SerializeToString,
+            simulator__pb2.NewWorkerInformation.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
