@@ -14,7 +14,7 @@ Then in a separate terminal run:
 
 To update the proto and `_pb2` modules from the root directory run:
 
-`python -m grpc_tools.protoc -I.src/protos --python_out=src/ --grpc_python_out=src/ src/protos/simulator.proto`
+`python -m grpc_tools.protoc -I./src/protos --python_out=src/ --grpc_python_out=src/ src/protos/simulator.proto`
 
 To clear the worker files run:
 `rm particle_timeline_*`
