@@ -1,18 +1,19 @@
-import grpc
-from concurrent import futures
 import time
+from concurrent import futures
+import grpc
+
+
 import simulator_pb2
 import simulator_pb2_grpc
 import simulator
 
-worker_count = 0
+WORKER_COUNT = 0
 
 
 class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
     def GetTask(self, request, context):
-        global worker_count
         response = simulator_pb2.NextTaskInformation()
-        worker_count = simulator.get_new_worker_id(worker_count)
+        worker_count = simulator.get_new_worker_id(WORKER_COUNT)
         response.id = worker_count
 
         return response
