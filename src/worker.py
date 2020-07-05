@@ -1,4 +1,5 @@
 import time
+import copy
 import grpc
 import simulator_pb2
 import simulator_pb2_grpc
@@ -13,10 +14,14 @@ def build_particles(particle_count):
     e = Emitter((100, 100))
     e.add_factory(smoke_machine())
 
-    while ((len(e.particles) % particle_count) != 0):
+    history = []
+    for i in range(particle_count):
+        history.append(f"frame {i}\n")
         e.update()
+        history.append(copy.deepcopy(e.particles))
+        i += 1
 
-    return e.particles[-particle_count:]
+    return history
 
 
 def get_worker_information(stub):
