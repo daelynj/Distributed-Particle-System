@@ -12,9 +12,10 @@ WORKER_COUNT = 0
 
 class SimulatorServicer(simulator_pb2_grpc.SimulatorServicer):
     def GetTask(self, request, context):
+        global WORKER_COUNT
         response = simulator_pb2.NextTaskInformation()
-        worker_count = simulator.get_new_worker_id(WORKER_COUNT)
-        response.id = worker_count
+        WORKER_COUNT = simulator.get_new_worker_id(WORKER_COUNT)
+        response.id = WORKER_COUNT
 
         return response
 
