@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message Particle {
+  sint32 x = 1;
+  sint32 y = 2;
+  float size = 3;
+  string color = 4;
+}
+
+message RenderInstructions {
+  int32 frame_count = 1;
+}
+
+message Frame {
+  int32 index = 1;
+  repeated Particle particles = 2;
+}
+
+service Generate {
+  rpc GenerateParticles(RenderInstructions) returns (stream Frame) {}
+}
