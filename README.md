@@ -7,10 +7,10 @@ To run tests from the root directory:
 `python -m pytest`
 
 To run the application from the root directory:
-`python src/master.py`
+`python src/server.py`
 
 Then in a separate terminal run:
-`python src/worker.py`
+`python src/client.py`
 
 To update the proto and `_pb2` modules from the root directory run:
 
