@@ -1,4 +1,4 @@
-grpcio==1.29.0
-grpcio-tools==1.29.0
+grpcio==1.71.0
+grpcio-tools==1.71.0
 pytest==5.4.3
 pygame==1.9.6
